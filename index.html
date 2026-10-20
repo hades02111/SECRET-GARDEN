@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171329">
+<meta name="description" content="Một nhiệm vụ bí mật, một khu vườn nhỏ và một món quà dành cho Như Ý.">
+<title>Secret Garden — Special Event 20.10 🌷</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar" aria-label="Secret Garden event">
+    <div class="brand"><span class="brand-mark">✦</span> DREAM QUEST</div>
+    <div class="topbar-actions">
+      <div class="event-chip">SPECIAL EVENT <span aria-hidden="true">·</span> 20.10</div>
+      <div class="music-control" aria-label="Điều khiển nhạc nền">
+        <button class="music-toggle" id="musicToggle" type="button" aria-pressed="false" title="Bật hoặc tắt nhạc nền">♫ Nhạc: Tắt</button>
+        <label class="volume-control" for="musicVolume" title="Âm lượng nhạc nền">
+          <span aria-hidden="true">♪</span>
+          <input id="musicVolume" type="range" min="0" max="50" value="22" step="1" aria-label="Âm lượng nhạc nền" />
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Screen 1: introduction -->
+    <section class="screen panel" id="screenIntro" aria-labelledby="introTitle">
+      <div class="panel-inner center">
+        <p class="eyebrow">A tiny side quest, just for you</p>
+        <h1 id="introTitle">SECRET<br><span class="gradient-text">GARDEN</span></h1>
+        <p class="lead">Một nhiệm vụ nhỏ dành cho cậu.<br>Không cần aim tốt, cũng không cần gánh team. Hôm nay chỉ cần nhận quà thôi. 😌</p>
+        <div class="event-status"><span class="live-dot"></span> EVENT AVAILABLE <span aria-hidden="true">✦</span> REWARD INSIDE</div>
+        <div class="hero-garden" aria-hidden="true">
+          <div class="hero-glow"></div><div class="hero-moon"></div><div class="hero-ground"></div>
+          <span class="twinkle t1">✧</span><span class="twinkle t2">✦</span><span class="twinkle t3">✧</span><span class="twinkle t4">✦</span><span class="twinkle t5">✧</span>
+          <div class="hero-stem one"></div><div class="hero-stem two"></div><div class="hero-stem three"></div>
+          <div class="hero-leaf l1"></div><div class="hero-leaf l2"></div>
+          <div class="hero-flower f1"><div class="hero-petals"><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><span class="hero-center"></span></div></div>
+          <div class="hero-flower f2"><div class="hero-petals"><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><span class="hero-center"></span></div></div>
+          <div class="hero-flower f3"><div class="hero-petals"><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><i class="hero-petal"></i><span class="hero-center"></span></div></div>
+        </div>
+        <button class="button" id="startQuest" type="button">Bắt đầu quest <span aria-hidden="true">↗</span></button>
+        <p class="hint">Quà đến hơi muộn do server bảo trì, nhưng vẫn claim được nha. 🎮</p>
+      </div>
+    </section>
+
+    <!-- Screen 2: interact with three light spots -->
+    <section class="screen panel" id="screenGarden" aria-labelledby="gardenTitle" hidden>
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div>
+            <p class="step-label">Quest 01 / Exploration</p>
+            <h2 id="gardenTitle">Đánh thức<br>khu vườn</h2>
+            <p class="quest-desc">Tìm 3 đốm sáng để mở khóa phần thưởng. Chạm vào từng ngôi sao nhé.</p>
+          </div>
+          <div class="step-counter">01 <span class="subtle">/ 05</span></div>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-meta"><span>GARDEN AWAKENING</span><span id="gardenCount">0 / 3</span></div>
+          <div class="progress-track" role="progressbar" aria-label="Tiến trình đánh thức khu vườn" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0" id="gardenProgress"><div class="progress-fill" id="gardenFill"></div></div>
+        </div>
+        <div class="garden-scene" aria-label="Khu vườn có ba đốm sáng để chạm">
+          <div class="scene-moon"></div><div class="scene-hill"></div>
+          <div class="scene-plant p1"></div><div class="scene-plant p2"></div><div class="scene-plant p3"></div><div class="scene-plant p4"></div>
+          <div class="leaf-shape"></div><div class="leaf-shape b"></div>
+          <div class="scene-flower f1"></div><div class="scene-flower f2"></div><div class="scene-flower f3"></div><div class="scene-flower f4"></div>
+          <button class="star-node n1" type="button" data-node="0" aria-label="Chạm đốm sáng thứ nhất">✦<span class="node-label">Ánh sáng I</span></button>
+          <button class="star-node n2" type="button" data-node="1" aria-label="Chạm đốm sáng thứ hai">✧<span class="node-label">Ánh sáng II</span></button>
+          <button class="star-node n3" type="button" data-node="2" aria-label="Chạm đốm sáng thứ ba">✦<span class="node-label">Ánh sáng III</span></button>
+        </div>
+        <p class="garden-message" id="gardenMessage" aria-live="polite">Một đốm sáng đang chờ cậu chạm vào…</p>
+        <div class="button-row">
+          <button class="button" id="toLetter" type="button" disabled>Mở phong thư <span aria-hidden="true">✉</span></button>
+          <button class="button secondary" id="gardenBack" type="button">Quay lại</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 3: letter -->
+    <section class="screen panel" id="screenLetter" aria-labelledby="letterTitle" hidden>
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div>
+            <p class="step-label">Quest 02 / A letter for you</p>
+            <h2 id="letterTitle">Có một bức thư<br>được gửi đến cậu</h2>
+            <p class="quest-desc">Không có mật khẩu, cũng chẳng cần giải đố. Chỉ là vài lời chúc nhỏ thôi. 🌷</p>
+          </div>
+          <div class="step-counter">02 <span class="subtle">/ 05</span></div>
+        </div>
+        <article class="letter-card">
+          <p class="letter-tag">QUEST 20/10 · A LITTLE NOTE</p>
+          <h2>Gửi Như Ý 🌸</h2>
+          <p>Chúc cậu 20/10 thật vui nha! 🌷</p>
+          <p>Mong cậu luôn có thật nhiều chuyện để cười, gặp nhiều điều dễ thương và dù đôi lúc có một ngày hơi tệ thì cuối ngày vẫn có thứ khiến cậu vui trở lại.</p>
+          <p>Cảm ơn cậu vì đã cùng chơi game với tớ trong thời gian qua. Từ những trận chơi vui hết nấc đến những pha khó hiểu đến mức chỉ biết nhìn nhau trong im lặng — nghĩ lại vẫn thấy khá nhiều chuyện đáng nhớ. 😂</p>
+          <p>Chúc cậu ngoài đời luôn may mắn, làm gì cũng thuận lợi, gặp nhiều người tốt và giữ được tâm trạng vui vẻ. Còn trong game thì mong cậu gặp đồng đội có tâm, ít gặp mấy pha báo đời, và nếu thua thì nhớ đừng để một trận làm hỏng cả ngày nhé.</p>
+          <p>Quà không to tát gì đâu, chỉ là một chút công sức và một lời chúc tớ muốn gửi đến cậu. Hy vọng khi mở trang web này, cậu sẽ mỉm cười một chút.</p>
+          <p>Chúc cậu luôn vui vẻ nhé!</p>
+          <p class="letter-signature">— Danh Hoàng <span aria-hidden="true">♥</span></p>
+        </article>
+        <div class="button-row">
+          <button class="button" id="toRewards" type="button">Nhận phần thưởng <span aria-hidden="true">✧</span></button>
+          <button class="button secondary" id="letterBack" type="button">Về khu vườn</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 4: choose all gifts in any order -->
+    <section class="screen panel" id="screenRewards" aria-labelledby="rewardsTitle" hidden>
+      <div class="panel-inner">
+        <div class="gift-header">
+          <p class="step-label">Quest 03 / Inventory unlocked</p>
+          <h2 id="rewardsTitle">Choose Your Buff</h2>
+          <p class="quest-desc">Ba hộp quà, ba lời chúc. Mở theo thứ tự nào cũng được — nhớ mở hết để nhận thành tích nhé.</p>
+          <div class="gift-count" id="giftCount">0 / 3 PHẦN THƯỞNG ĐÃ MỞ</div>
+        </div>
+        <div class="progress-wrap" style="max-width:500px;margin:0 auto 22px">
+          <div class="progress-track" role="progressbar" aria-label="Tiến trình mở hộp quà" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0" id="giftProgress"><div class="progress-fill" id="giftFill"></div></div>
+        </div>
+        <div class="gifts">
+          <button class="gift-card" type="button" data-gift="luck" aria-expanded="false">
+            <span class="gift-icon" aria-hidden="true">🍀</span>
+            <span class="gift-name">LUCK +99</span>
+            <span class="gift-stat">▣ Hộp quà chưa mở</span>
+          </button>
+          <button class="gift-card" type="button" data-gift="shield" aria-expanded="false">
+            <span class="gift-icon" aria-hidden="true">🛡️</span>
+            <span class="gift-name">ANTI-TILT SHIELD</span>
+            <span class="gift-stat">▣ Hộp quà chưa mở</span>
+          </button>
+          <button class="gift-card" type="button" data-gift="mood" aria-expanded="false">
+            <span class="gift-icon" aria-hidden="true">🌷</span>
+            <span class="gift-name">MOOD +100</span>
+            <span class="gift-stat">▣ Hộp quà chưa mở</span>
+          </button>
+        </div>
+        <p class="gift-status" id="giftStatus" aria-live="polite">Chọn một hộp bất kỳ để mở lời chúc bí mật nha 👀</p>
+        <div class="button-row">
+          <button class="button gold" id="toFinal" type="button" disabled>Hoàn thành quest <span aria-hidden="true">🏆</span></button>
+          <button class="button secondary" id="rewardsBack" type="button">Đọc lại thư</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 5: achievement and optional Easter egg -->
+    <section class="screen panel" id="screenFinal" aria-labelledby="finalTitle" hidden>
+      <div class="panel-inner achievement">
+        <button class="egg-star" id="easterEgg" type="button" aria-label="Một ngôi sao bí mật" title="Hmm… ngôi sao này hơi khác nhỉ?">✦</button>
+        <p class="step-label">Quest 04 / Completed</p>
+        <div class="trophy-orb" aria-hidden="true">🏆</div>
+        <p class="eyebrow">ALL REWARDS CLAIMED</p>
+        <h2 id="finalTitle">QUEST<br><span class="gradient-text">COMPLETE!</span></h2>
+        <p class="achievement-copy">Thành tích mở khóa: <strong>Flower Collector 🌷</strong><br>Chúc cậu có thật nhiều ngày vui, nhiều chuyện để cười và những đồng đội có tâm cả trong game lẫn ngoài đời.</p>
+        <div class="reward-pills"><span class="reward-pill">🍀 +99 Luck</span><span class="reward-pill">🛡 Anti-Tilt</span><span class="reward-pill">🌷 +100 Mood</span></div>
+        <p class="lead" style="font-size:.9rem;margin-top:20px">Cảm ơn cậu đã ghé qua nhận quà nha. Chúc cậu luôn vui vẻ! ✨</p>
+        <p class="egg-hint">P.S. Có một ngôi sao ở góc trên đang hành xử hơi đáng ngờ…</p>
+        <div class="button-row"><button class="button" id="restartQuest" type="button">Mở lại khu vườn ↻</button></div>
+      </div>
+    </section>
+  </main>
+  
+</div>
+
+<div class="modal-backdrop" id="eggModal" role="dialog" aria-modal="true" aria-labelledby="eggTitle" hidden>
+  <div class="modal">
+    <button class="close-modal" id="closeEgg" type="button" aria-label="Đóng">×</button>
+    <div class="modal-icon" aria-hidden="true">✨</div>
+    <h3 id="eggTitle">SECRET ACHIEVEMENT UNLOCKED</h3>
+    <p>Phát hiện bí mật thành công!<br><br>Phần quà này không đổi được skin, không bán được lấy vàng, cũng không cộng RR… nhưng hy vọng đổi được một nụ cười. 😂</p>
+    <button class="button gold" id="gotEgg" type="button">Đã nhận bí mật</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
